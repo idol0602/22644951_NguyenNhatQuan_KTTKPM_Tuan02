@@ -3,30 +3,32 @@ package edu.iuh.fit;
 import edu.iuh.fit.Bai1.Logistics;
 import edu.iuh.fit.Bai1.RoadLogistics;
 import edu.iuh.fit.Bai1.SeaLogistics;
-import edu.iuh.fit.Bai2.FurnitureFactory;
+import edu.iuh.fit.Bai2.AbstractFactory.FurnitureFactory;
 import edu.iuh.fit.Bai2.InteriorDesigner;
-import edu.iuh.fit.Bai2.ModernFurnitureFactory;
-import edu.iuh.fit.Bai2.VictorianFurnitureFactory;
+import edu.iuh.fit.Bai2.ModernFamily.ModernFurnitureFactory;
+import edu.iuh.fit.Bai2.VictorianFamily.VictorianFurnitureFactory;
 
 public class Main {
     public static void main(String[] args) {
 
         // Bài 1
 
-//        Logistics logistics;
-//
-//        // chọn loại vận chuyển
-//        String type = "road";
-//
-//        if (type.equals("road")) {
-//            logistics = new RoadLogistics();
-//        } else {
-//            logistics = new SeaLogistics();
-//        }
-//
-//        logistics.planDelivery();
+        Logistics logistics;
+
+        // chọn loại vận chuyển
+        String type = "road";
+
+        if (type.equals("road")) {
+            logistics = new RoadLogistics();
+        } else {
+            logistics = new SeaLogistics();
+        }
+
+        logistics.planDelivery();
 
         //Bài 2
+
+
 
         FurnitureFactory factory;
 

@@ -1,4 +1,6 @@
-package edu.iuh.fit.Bai2;
+package edu.iuh.fit.Bai2.VictorianFamily;
+
+import edu.iuh.fit.Bai2.AbstractProduct.Chair;
 
 public class VictorianChair implements Chair {
 

@@ -1,4 +1,6 @@
-package edu.iuh.fit.Bai2;
+package edu.iuh.fit.Bai2.ModernFamily;
+
+import edu.iuh.fit.Bai2.AbstractProduct.Sofa;
 
 public class ModernSofa implements Sofa {
 

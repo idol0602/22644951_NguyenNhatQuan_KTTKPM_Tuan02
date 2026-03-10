@@ -1,4 +1,4 @@
-package edu.iuh.fit.Bai2;
+package edu.iuh.fit.Bai2.AbstractProduct;
 
 public interface Chair {
     void sitOn();
