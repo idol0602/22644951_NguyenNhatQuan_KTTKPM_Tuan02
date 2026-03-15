@@ -1,0 +1,79 @@
+@startuml
+title Bai 5 - Payment System (State + Strategy + Decorator)
+
+package "edu.iuh.fit.Bai5" {
+
+'==================== State ====================
+interface PaymentState {
+  +handle(ctx: PaymentContext)
+  +getStateName(): String
+}
+
+class PendingPaymentState
+class ProcessingPaymentState
+class CompletedPaymentState
+class FailedPaymentState
+
+PaymentState <|.. PendingPaymentState
+PaymentState <|.. ProcessingPaymentState
+PaymentState <|.. CompletedPaymentState
+PaymentState <|.. FailedPaymentState
+
+class PaymentContext {
+  -currentState: PaymentState
+  -payment: Payment
+  +process()
+  +setState(state: PaymentState)
+  +getPayment(): Payment
+}
+
+PaymentContext o-- PaymentState : current
+PaymentContext o-- Payment
+
+'==================== Strategy ====================
+interface PaymentStrategy {
+  +pay(amount: double)
+  +getMethodName(): String
+}
+
+class CreditCardStrategy
+class PayPalStrategy
+
+PaymentStrategy <|.. CreditCardStrategy
+PaymentStrategy <|.. PayPalStrategy
+
+class Payment {
+  -orderId: String
+  -paymentStrategy: PaymentStrategy
+  -paymentComponent: PaymentComponent
+  +setPaymentStrategy(strategy: PaymentStrategy)
+  +displayInfo()
+}
+
+Payment o-- PaymentStrategy : uses
+Payment o-- PaymentComponent : has
+
+'==================== Decorator ====================
+interface PaymentComponent {
+  +getDescription(): String
+  +getCost(): double
+}
+
+class BasicPayment
+abstract class PaymentDecorator {
+  #wrappedPayment: PaymentComponent
+}
+class ProcessingFeeDecorator
+class DiscountDecorator
+
+PaymentComponent <|.. BasicPayment
+PaymentComponent <|.. PaymentDecorator
+PaymentDecorator <|-- ProcessingFeeDecorator
+PaymentDecorator <|-- DiscountDecorator
+
+PaymentDecorator o-- PaymentComponent : wraps
+
+}
+
+@enduml
+

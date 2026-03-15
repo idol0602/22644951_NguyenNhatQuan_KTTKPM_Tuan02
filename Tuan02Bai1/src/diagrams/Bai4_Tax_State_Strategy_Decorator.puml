@@ -1,0 +1,80 @@
+@startuml
+title Bai 4 - Product Tax Calculation (State + Strategy + Decorator)
+
+package "edu.iuh.fit.Bai4" {
+
+'==================== State ====================
+interface TaxState {
+  +handle(ctx: TaxContext)
+  +getStateName(): String
+}
+
+class PendingTaxState
+class CalculatingTaxState
+class CompletedTaxState
+
+TaxState <|.. PendingTaxState
+TaxState <|.. CalculatingTaxState
+TaxState <|.. CompletedTaxState
+
+class TaxContext {
+  -currentState: TaxState
+  -product: Product
+  +process()
+  +setState(state: TaxState)
+  +getProduct(): Product
+}
+
+TaxContext o-- TaxState : current
+TaxContext o-- Product
+
+'==================== Strategy ====================
+interface TaxStrategy {
+  +calculateTax(amount: double): double
+  +getTaxName(): String
+}
+
+class ConsumptionTaxStrategy
+class VATStrategy
+class LuxuryTaxStrategy
+
+TaxStrategy <|.. ConsumptionTaxStrategy
+TaxStrategy <|.. VATStrategy
+TaxStrategy <|.. LuxuryTaxStrategy
+
+class Product {
+  -name: String
+  -basePrice: double
+  -taxStrategy: TaxStrategy
+  -productComponent: ProductComponent
+  +setTaxStrategy(strategy: TaxStrategy)
+  +displayInfo()
+}
+
+Product o-- TaxStrategy : uses
+Product o-- ProductComponent : has
+
+'==================== Decorator ====================
+interface ProductComponent {
+  +getDescription(): String
+  +getCost(): double
+}
+
+class BasicProduct
+abstract class ProductDecorator {
+  #wrappedProduct: ProductComponent
+}
+class PremiumPackagingDecorator
+class WarrantyDecorator
+
+ProductComponent <|.. BasicProduct
+ProductComponent <|.. ProductDecorator
+ProductDecorator <|-- PremiumPackagingDecorator
+ProductDecorator <|-- WarrantyDecorator
+
+ProductDecorator o-- ProductComponent : wraps
+
+}
+
+@enduml
+

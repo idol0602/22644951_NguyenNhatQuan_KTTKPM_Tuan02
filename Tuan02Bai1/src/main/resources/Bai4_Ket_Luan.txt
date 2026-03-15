@@ -1,0 +1,51 @@
+╔══════════════════════════════════════════════════════════════════╗
+║                    BÀI 4: KẾT LUẬN                               ║
+║         HỆ THỐNG TÍNH TOÁN THUẾ SẢN PHẨM                        ║
+║            Design Pattern: State + Strategy + Decorator         ║
+╚══════════════════════════════════════════════════════════════════╝
+
+1. STATE PATTERN:
+   ✓ Quản lý quy trình tính thuế qua các trạng thái rõ ràng
+   ✓ Các trạng thái: Chờ tính thuế → Đang tính → Hoàn tất
+   ✓ Mỗi trạng thái có logic xử lý riêng biệt
+   ✓ Dễ bảo trì: Mỗi trạng thái là một lớp riêng
+   ✓ Dễ thêm trạng thái mới (Lỗi, Từ chối, Chờ phê duyệt,...)
+
+2. STRATEGY PATTERN:
+   ✓ Linh hoạt lựa chọn loại thuế cho sản phẩm
+   ✓ Hỗ trợ 3 chiến lược:
+     - Thuế tiêu thụ (10%) - cho hàng hóa thông thường
+     - Thuế VAT (8%) - cho sản phẩm điện tử
+     - Thuế xa xỉ (20%) - cho hàng cao cấp
+   ✓ Có thể thay đổi chiến lược thuế tại runtime
+   ✓ Dễ dàng thêm loại thuế mới (Thuế khí thải, Thuế bảo vệ môi trường,...)
+   ✓ Tính toán thuế một cách chính xác và rõ ràng
+
+3. DECORATOR PATTERN:
+   ✓ Thêm dịch vụ bổ sung mà không thay đổi lớp sản phẩm gốc
+   ✓ Hỗ trợ các dịch vụ:
+     - Bao bì cao cấp (tăng giá)
+     - Bảo hành mở rộng (tăng giá)
+   ✓ Có thể kết hợp nhiều decorator cùng lúc
+   ✓ Chi phí dịch vụ được cộng dồn vào giá cuối cùng
+   ✓ Dễ thêm dịch vụ mới (Gửi hàng, Bảo bì sinh thái,...)
+
+KẾT LUẬN CHUNG:
+──────────────
+Hệ thống tính thuế sản phẩm đạt được:
+• Tính chính xác cao: Các thuế được tính đúng theo chiến lược
+• Linh hoạt: Có thể thay đổi loại thuế tùy theo sản phẩm
+• Dễ mở rộng: Có thể thêm loại thuế mới một cách dễ dàng
+• Tính rõ ràng: Logic tính thuế được tách biệt khỏi logic khác
+• Tuân thủ OCP: Mở rộng nhưng không sửa đổi code cũ
+
+Công thức tính giá cuối:
+Giá cuối = (Giá gốc + Chi phí dịch vụ) + Thuế
+
+Ứng dụng thực tế:
+• Hệ thống tính hóa đơn (Hóa đơn điện tử, Cơ quan thuế,...)
+• Nền tảng bán hàng trực tuyến
+• Phần mềm kế toán doanh nghiệp
+• Hệ thống quản lý thuế
+• Công cụ tính toán giá sản phẩm
+

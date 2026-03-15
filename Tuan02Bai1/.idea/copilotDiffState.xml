@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/src/main/java/edu/iuh/fit/Bai3/State/OrderState.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/edu/iuh/fit/Bai3/State/OrderState.java" />
+              <option name="updatedContent" value="package edu.iuh.fit.Bai3.State;&#10;&#10;/**&#10; * STATE PATTERN - Interface định nghĩa các hành vi của trạng thái đơn hàng&#10; */&#10;public interface OrderState {&#10;    void handleOrder(OrderContext context);&#10;    String getStateName();&#10;}&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

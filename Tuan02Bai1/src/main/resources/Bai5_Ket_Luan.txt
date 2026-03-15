@@ -1,0 +1,55 @@
+╔══════════════════════════════════════════════════════════════════╗
+║                    BÀI 5: KẾT LUẬN                               ║
+║               HỆ THỐNG THANH TOÁN TRỰC TUYẾN                    ║
+║            Design Pattern: State + Strategy + Decorator         ║
+╚══════════════════════════════════════════════════════════════════╝
+
+1. STATE PATTERN:
+   ✓ Quản lý quy trình thanh toán qua các trạng thái rõ ràng
+   ✓ Các trạng thái: Chờ thanh toán → Đang xử lý → Hoàn tất / Thất bại
+   ✓ Mỗi trạng thái có logic xử lý riêng biệt
+   ✓ Dễ bảo trì: Mỗi trạng thái là một lớp độc lập
+   ✓ Dễ thêm trạng thái mới (Chờ phê duyệt, Bị từ chối, Hoàn tiền,...)
+   ✓ Giúp xử lý các sự cố thanh toán một cách có cấu trúc
+
+2. STRATEGY PATTERN:
+   ✓ Linh hoạt lựa chọn phương thức thanh toán
+   ✓ Hỗ trợ 2 chiến lược chính:
+     - Thẻ tín dụng (Credit Card)
+     - PayPal (Ví điện tử)
+   ✓ Có thể thay đổi phương thức thanh toán tại runtime
+   ✓ Dễ dàng mở rộng thêm phương thức (MoMo, ZaloPay, Apple Pay,...)
+   ✓ Mỗi phương thức có quy trình xác thực riêng
+   ✓ Giảm sự phụ thuộc vào một phương thức thanh toán cụ thể
+
+3. DECORATOR PATTERN:
+   ✓ Thêm tính năng bổ sung mà không thay đổi lớp thanh toán gốc
+   ✓ Hỗ trợ các tính năng:
+     - Phí xử lý (2-3%) - chi phí cho dịch vụ thanh toán
+     - Mã giảm giá (5-20%) - khuyến mại cho khách hàng
+   ✓ Có thể kết hợp nhiều decorator cùng lúc
+   ✓ Tính toán chi phí một cách rõ ràng và linh hoạt
+   ✓ Dễ thêm tính năng mới (Bảo hiểm, Hỗ trợ kỹ thuật, Thanh toán trả góp,...)
+
+KẾT LUẬN CHUNG:
+──────────────
+Hệ thống thanh toán đạt được:
+• Tính an toàn: Hỗ trợ nhiều phương thức thanh toán an toàn
+• Tính linh hoạt: Có thể thay đổi phương thức thanh toán linh hoạt
+• Tính mở rộng: Dễ thêm phương thức thanh toán và tính năng mới
+• Tính rõ ràng: Tách biệt logic thanh toán khỏi logic khác
+• Trải nghiệm người dùng tốt: Cho phép lựa chọn phương thức thanh toán yêu thích
+• Tuân thủ SOLID: Đặc biệt là Open/Closed và Liskov Substitution
+
+Công thức tính giá trị thanh toán:
+Giá thanh toán = Giá gốc + Phí xử lý - Mã giảm giá
+
+Ứng dụng thực tế:
+• Nền tảng bán hàng trực tuyến (Shopee, Lazada, Tiki,...)
+• Ứng dụng thanh toán di động
+• Nền tảng gọi xe (Grab, Be,...)
+• Dịch vụ vé máy bay, khách sạn
+• Ứng dụng quản lý chi tiêu cá nhân
+• Nền tảng mua hàng nhóm
+• Hệ thống quản lý chung cư
+

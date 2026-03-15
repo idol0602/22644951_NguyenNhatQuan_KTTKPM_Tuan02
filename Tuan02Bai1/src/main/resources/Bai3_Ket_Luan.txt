@@ -1,0 +1,42 @@
+╔══════════════════════════════════════════════════════════════════╗
+║                    BÀI 3: KẾT LUẬN                               ║
+║              HỆ THỐNG QUẢN LÝ ĐƠN HÀNG                          ║
+║            Design Pattern: State + Strategy + Decorator         ║
+╚══════════════════════════════════════════════════════════════════╝
+
+1. STATE PATTERN:
+   ✓ Quản lý trạng thái đơn hàng một cách linh hoạt
+   ✓ Các trạng thái: Mới tạo → Đang xử lý → Đã giao / Hủy
+   ✓ Mỗi trạng thái có hành vi riêng biệt, không dùng if-else
+   ✓ Dễ mở rộng thêm trạng thái mới mà không ảnh hưởng code cũ
+   ✓ Giúp phân tách logic xử lý theo trạng thái rõ ràng
+
+2. STRATEGY PATTERN:
+   ✓ Cho phép thay đổi phương thức vận chuyển linh hoạt
+   ✓ Hỗ trợ 2 chiến lược: Vận chuyển tiêu chuẩn, Vận chuyển nhanh
+   ✓ Có thể thay đổi chiến lược tại runtime
+   ✓ Dễ dàng thêm phương thức vận chuyển mới (Nước ngoài, Drone,...)
+   ✓ Giảm chi phí bảo trì so với việc sử dụng if-else
+
+3. DECORATOR PATTERN:
+   ✓ Thêm dịch vụ bổ sung linh hoạt mà không thay đổi lớp gốc
+   ✓ Hỗ trợ các dịch vụ: Gói quà, Bảo hiểm
+   ✓ Có thể kết hợp nhiều decorator cùng lúc
+   ✓ Tính toán chi phí dịch vụ một cách rõ ràng
+   ✓ Dễ dàng thêm dịch vụ mới (Ưu tiên giao, Theo dõi vị trí,...)
+
+KẾT LUẬN CHUNG:
+──────────────
+Kết hợp 3 Design Pattern tạo ra một hệ thống:
+• Linh hoạt: Có thể thay đổi trạng thái, chiến lược, và dịch vụ dễ dàng
+• Dễ bảo trì: Logic xử lý được tách biệt rõ ràng
+• Dễ mở rộng: Có thể thêm tính năng mới mà không làm hỏng code cũ
+• Có tính dùng lại cao: Các lớp có thể được sử dụng lại trong các ngữ cảnh khác
+• Tuân thủ nguyên tắc SOLID: Đặc biệt là Single Responsibility và Open/Closed
+
+Ứng dụng thực tế:
+• Hệ thống e-commerce (Tiki, Shopee, Lazada,...)
+• Ứng dụng giao hàng (Grab, Be,...)
+• Nền tảng bán lẻ trực tuyến
+• Hệ thống quản lý logistics
+

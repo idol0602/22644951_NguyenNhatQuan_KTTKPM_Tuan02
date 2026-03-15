@@ -1,0 +1,75 @@
+@startuml
+title Bai 3 - Order Management (State + Strategy + Decorator)
+
+package "edu.iuh.fit.Bai3" {
+
+'==================== State ====================
+interface OrderState {
+  +handleOrder(order: Order)
+  +getStateName(): String
+}
+
+class NewState
+class ProcessingState
+class DeliveredState
+class CancelledState
+
+OrderState <|.. NewState
+OrderState <|.. ProcessingState
+OrderState <|.. DeliveredState
+OrderState <|.. CancelledState
+
+class Order {
+  -orderId: String
+  -customerName: String
+  -totalAmount: double
+  -state: OrderState
+  -shippingStrategy: ShippingStrategy
+  -orderComponent: OrderComponent
+  +processOrder()
+  +cancelOrder()
+  +displayOrderDetails()
+  +setState(state: OrderState)
+  +setShippingStrategy(strategy: ShippingStrategy)
+}
+
+Order o-- OrderState : current
+
+'==================== Strategy ====================
+interface ShippingStrategy {
+  +ship(order: Order)
+  +getStrategyName(): String
+}
+class StandardShipping
+class ExpressShipping
+
+ShippingStrategy <|.. StandardShipping
+ShippingStrategy <|.. ExpressShipping
+
+Order o-- ShippingStrategy : uses
+
+'==================== Decorator ====================
+interface OrderComponent {
+  +getDescription(): String
+  +getCost(): double
+}
+
+class BasicOrder
+abstract class OrderDecorator {
+  #wrappedOrder: OrderComponent
+}
+class GiftWrapDecorator
+class InsuranceDecorator
+
+OrderComponent <|.. BasicOrder
+OrderComponent <|.. OrderDecorator
+OrderDecorator <|-- GiftWrapDecorator
+OrderDecorator <|-- InsuranceDecorator
+
+OrderDecorator o-- OrderComponent : wraps
+Order o-- OrderComponent : has
+
+}
+
+@enduml
+
